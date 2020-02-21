@@ -1,0 +1,25 @@
+.Card:hover {
+-webkit-box-shadow: 5px 5px 15px 5px #FF8080, -9px 5px 15px 5px #FFE488, -7px -5px 15px 5px #8CFF85, 12px -5px 15px 5px #80C7FF, 12px 10px 15px 7px #E488FF, -10px 10px 15px 7px #FF616B, -10px -7px 27px 1px #8E5CFF, 5px 5px 15px 5px rgba(0,0,0,0); 
+box-shadow: 5px 5px 15px 5px #FF8080, -9px 5px 15px 5px #FFE488, -7px -5px 15px 5px #8CFF85, 12px -5px 15px 5px #80C7FF, 12px 10px 15px 7px #E488FF, -10px 10px 15px 7px #FF616B, -10px -7px 27px 1px #8E5CFF, 5px 5px 15px 5px rgba(0,0,0,0);
+}
+.quotestyle {
+    transition-property: opacity;
+    transition-duration: 3s;
+}
+.tracking-in-contract-bck { 
+    animation: tracking-in-contract-bck 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) both; 
+    }
+    @keyframes tracking-in-contract-bck { 
+        0% { 
+        letter-spacing: 1em; 
+        transform: translateZ(400px); 
+        opacity: 0; 
+        } 
+        40% { 
+        opacity: 0.6; 
+        } 
+        100% { 
+        transform: translateZ(0); 
+        opacity: 1; 
+        } 
+        }
