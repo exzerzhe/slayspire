@@ -18,6 +18,9 @@ import CharactersSelect from '../components/CharactersSelect';
 import { fetchCharacter } from '../actions/characterSelect';
 import { removeCard } from '../actions/removeCard';
 import GameEnded from '../components/GameEnded';
+import NewCards from '../components/NewCards';
+import { fetchNewMoves } from '../actions/fetchNewMoves';
+import '../style.css'
 
 
 
@@ -70,7 +73,10 @@ class App extends Component {
     avatar,
     removeCardAction,
     renderCards,
-    enemyAvatar
+    enemyAvatar,
+    renderMultiplier,
+    fetchNewMovesAction,
+    newData
   } = this.props
   if (playerHp <=0) {
     return(
@@ -82,7 +88,7 @@ class App extends Component {
  if (gameBegin === true){
     return(
       <Container maxWidth='xl' style={AppStyle}>
-          <Container maxWidth='xl' style={{height:window.innerHeight - 530, textAlign:'center', paddingTop:50}}>
+          <Container maxWidth='xl' style={{height:window.innerHeight - 600, textAlign:'center', paddingTop:50}}>
             {hp > 0?
             <div>
             {fetching? <div style={{color:'white', marginBottom:20, fontSize:20}}>Ищу врага</div> : 
@@ -93,16 +99,18 @@ class App extends Component {
             </div> }
             </div> :
             <div>
-            <Typography variant="h3" style={{color:'red'}}>{enemyName} уничтожен</Typography>
+            <div className="tracking-in-contract-bck" style={{color:'white', fontSize: 30, marginBottom: 30}}>{enemyName} был повержен</div>
             <Button variant='contained' onClick={()=>{fetchEnemyAction();newGameAction();fetchMovesAction(playerName)}}>Next enemy</Button>
+            <NewCards fetchNewMoves={fetchNewMovesAction} playerName={playerName} newData={newData} newGame={newGameAction} fetchEnemy={fetchEnemyAction} fetchMoves={fetchMovesAction}/>
             </div> }
             </Container>
             <Container maxWidth="lg">
           <Grid container spacing={1}>
             <Grid item xs={3}>
+              {hp >0?
             <Container>
               <Player mana={mana} enemyTurn={enemyTurnAction} playerHp={playerHp} hp={hp} playerName={playerName} avatar={avatar}/>
-            </Container>
+            </Container> : null}
             </Grid>
             <Grid item xs={3}>
               <Container style={{textAlign:'left', height:140}}>
@@ -125,19 +133,26 @@ class App extends Component {
                 <Typography variant="h4" style={{color:'red', textShadow:'0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #49ff18, 0 0 30px #49FF18, 0 0 40px #49FF18, 0 0 55px #49FF18, 0 0 75px #49ff18'}}>
                 {move.name}
                 </Typography>
+                <Typography>
+                  Урон: {move.damage}
+                </Typography>
                 </Typography> : null}
                 </Container>
               </Grid>
             <Grid item xs={3}>
+              {hp > 0?
               <Container>
                 <Enemy hp={hp} move={move} enemyPhrase={enemyPhrase} enemyName={enemyName} fetchEnemy={fetchEnemyAction} fetching={fetching} enemyAvatar={enemyAvatar}/>
-              </Container>
+              </Container>: null}
             </Grid>
             </Grid>
             </Container>
             <Container maxWidth='xl' style={{marginTop:50}}>
+              {moveFetching? null :
+              <div>
               {hp <= 0? null :
-          <Cards data={data} fetchMoves={fetchMovesAction} damageDeal={damageDealAction} manaReduce={manaReduceAction} mana={mana} playerName={playerName} renderButton={renderButton} renderCards={renderCards} removeCard={removeCardAction} hp={hp} fetching={fetching}/>}
+          <Cards data={data} fetchMoves={fetchMovesAction} damageDeal={damageDealAction} manaReduce={manaReduceAction} mana={mana} playerName={playerName} renderButton={renderButton} renderCards={renderCards} removeCard={removeCardAction} hp={hp} fetching={fetching} renderMultiplier={renderMultiplier}/>}
+          </div>}
           </Container>
       </Container>
     )} else 
@@ -168,20 +183,23 @@ const mapStateToProps = store => {
     moveFetching: store.enemyHp.moveFetching,
     avatar: store.enemyTurn.avatar,
     renderCards: store.cardsReducer.renderCards,
-    enemyAvatar: store.enemyHp.enemyAvatar
+    enemyAvatar: store.enemyHp.enemyAvatar,
+    renderMultiplier: store.enemyHp.renderMultiplier,
+    newData:store.newCardsReducer.newData
   }
 }
 const mapDispatchToProps = dispatch => {
   return {
     fetchMovesAction:(playerName)=>dispatch(fetchMoves(playerName)),
-    damageDealAction:(dmg, move)=>dispatch(damageDeal(dmg, move)),
+    damageDealAction:(dmg, move, heal, buff)=>dispatch(damageDeal(dmg, move, heal, buff)),
     manaReduceAction:(mana)=>dispatch(manaReduce(mana)),
     enemyTurnAction:()=>dispatch(enemyTurn()),
     newGameAction:()=>dispatch(newGame()),
     fetchEnemyAction:()=>dispatch(fetchEnemy()),
     gameMenuAction:(playerName, avatar)=>dispatch(gameMenu(playerName, avatar)),
     fetchCharacterAction:()=>dispatch(fetchCharacter()),
-    removeCardAction:(cardName)=>dispatch(removeCard(cardName))
+    removeCardAction:(cardName)=>dispatch(removeCard(cardName)),
+    fetchNewMovesAction:(playerName)=>dispatch(fetchNewMoves(playerName))
     
   }
 }

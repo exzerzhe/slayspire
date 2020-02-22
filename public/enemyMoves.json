@@ -1,23 +1,23 @@
 [
     {
         "name": "Нагнать тоску",
-        "damage": 50,
+        "damage": 15,
         "mana": 3
     },
     {
 
         "name": "Разозлить",
-        "damage": 50,
+        "damage": 20,
         "mana": 6
     },
     {
         "name": "Паранойя",
-        "damage": 50,
+        "damage": 10,
         "mana": 2
     },
     {
         "name": "Игнор",
-        "damage": 50,
+        "damage": 30,
         "mana": 5
     }
 

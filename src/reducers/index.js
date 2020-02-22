@@ -5,6 +5,7 @@ import { manaReducer } from './manaReducer'
 import { enemyTurn } from './enemyTurn';
 import { gameMenuReducer } from './gameMenuReducer'
 import { characterReducer } from './characterReducer'
+import { newCardsReducer } from './newCardsReducer'
 
 
 
@@ -16,6 +17,7 @@ export const rootReducer = combineReducers({
     manaReducer: manaReducer,
     enemyTurn: enemyTurn,
     gameMenuReducer: gameMenuReducer,
-    characterReducer: characterReducer
+    characterReducer: characterReducer,
+    newCardsReducer: newCardsReducer
     
 })

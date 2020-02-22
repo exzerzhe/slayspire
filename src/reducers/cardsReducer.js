@@ -4,7 +4,7 @@ import { ENEMY_TURN } from '../actions/enemyActions'
 
 const initialState = {
     data: [],
-    renderCards: false
+    renderCards: false,
 }
 
 export function cardsReducer (state=initialState, action) {
@@ -17,7 +17,7 @@ export function cardsReducer (state=initialState, action) {
                     let indexmove = Math.floor(Math.random() * jsondata.length)
                     let move = jsondata[indexmove]
                     moves.push(move)
-                 jsondata = jsondata.filter((item)=>item.name !== move.name)
+                 jsondata = jsondata.filter((item, index)=>index !== indexmove)
                 }
             return{...state, data: moves, renderCards: true}
             }
