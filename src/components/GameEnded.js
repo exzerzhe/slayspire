@@ -21,7 +21,7 @@ export default class GameEnded extends React.Component {
                 <Button onClick={()=>window.location.reload()} variant='contained'>НАЧАТЬ НОВУЮ ИГРУ</Button>
             </Container>
             <Container>
-                <Typography variant="h2" style={{color:'white', textAlign:'center'}}>{this.props.playerName} был повержен врагом "{this.props.enemyName}"</Typography>
+                <Typography variant="h2" style={{color:'white', textAlign:'center'}}> Боец "{this.props.playerName}" был повержен врагом "{this.props.enemyName}"</Typography>
             </Container>
             <Container style={{textAlign:'center'}}>
             <div className='tracking-in-contract-bck' style={{textAlign:'center', color:'white', fontSize: 25, marginTop: 20}} id="quotes">{this.getQuote()}</div>

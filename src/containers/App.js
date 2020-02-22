@@ -82,7 +82,7 @@ class App extends Component {
  if (gameBegin === true){
     return(
       <Container maxWidth='xl' style={AppStyle}>
-          <Container maxWidth='xl' style={{height:220, textAlign:'center', paddingTop:50}}>
+          <Container maxWidth='xl' style={{height:window.innerHeight - 530, textAlign:'center', paddingTop:50}}>
             {hp > 0?
             <div>
             {fetching? <div style={{color:'white', marginBottom:20, fontSize:20}}>Ищу врага</div> : 
