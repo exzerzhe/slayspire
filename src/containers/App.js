@@ -24,6 +24,7 @@ import '../style.css'
 
 
 
+
 const AppStyle ={
   backgroundImage: "url(" + Background + ")",
   backgroundRepeat: 'no-repeat',

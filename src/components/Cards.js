@@ -3,6 +3,7 @@ import React from 'react'
 import {List, Typography} from '@material-ui/core'
 import {ListItem} from '@material-ui/core'
 import '../style.css'
+import { withSnackbar} from 'notistack'
 
 
 const flexContainer = {
@@ -21,6 +22,7 @@ const ItemsList = {
         color:'black'
     }
 }
+const message = 'У ВАС НЕ ХВАТАЕТ МАНЫ'
 
 
 class Cards extends React.Component {
@@ -33,9 +35,13 @@ class Cards extends React.Component {
 
     dealCardDamage = (dmg, mana, move, heal, buff) => {
         if((this.props.mana - mana) <0){
-            if(this.props.mana <= 0){
-            alert('no mana') 
-        }} else {
+            console.log(this.props.mana)
+            this.props.enqueueSnackbar(message,{
+                variant: 'error',
+                vertical: 'top',
+                horizontal: 'left'
+            })
+            } else {
         this.props.damageDeal(dmg, move, heal, buff)
         this.props.manaReduce(mana)
         this.props.removeCard(move)
@@ -57,7 +63,7 @@ class Cards extends React.Component {
                             <div>
                             <Typography variant="button">НАНОСИТ</Typography>
                             <Typography variant='button' style={{border:'1px solid black', borderRadius:50, padding:5, backgroundColor:'red', color:'white', marginLeft:5, marginRight:5}}>
-                               {item.random === true? <text>?</text> : <text>{item.damage}</text>}
+                               {item.random === true? <text>10 - 40</text> : <text>{item.damage}</text>}
                                 </Typography>
                             {this.props.renderMultiplier? <Typography variant='button' style={{color:'red', marginRight:5}}>+50%</Typography>: null}
                             <Typography variant="button">УРОНА</Typography><br></br>
@@ -84,4 +90,4 @@ class Cards extends React.Component {
     }
 }
 
-export default Cards
+export default withSnackbar(Cards)

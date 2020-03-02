@@ -28,6 +28,7 @@ export const devochkaMoves = [
     {
         name: "Рандомный урон",
         damage: Math.floor(Math.random() * (40 - 10)) + 10,
-        mana: 5
+        mana: 5,
+        random:true
     }
 ]
