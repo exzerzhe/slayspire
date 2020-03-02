@@ -101,7 +101,6 @@ class App extends Component {
             </div> :
             <div>
             <div className="tracking-in-contract-bck" style={{color:'white', fontSize: 30, marginBottom: 30}}>{enemyName} был повержен</div>
-            <Button variant='contained' onClick={()=>{fetchEnemyAction();newGameAction();fetchMovesAction(playerName)}}>Next enemy</Button>
             <NewCards fetchNewMoves={fetchNewMovesAction} playerName={playerName} newData={newData} newGame={newGameAction} fetchEnemy={fetchEnemyAction} fetchMoves={fetchMovesAction}/>
             </div> }
             </Container>
