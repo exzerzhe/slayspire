@@ -24,6 +24,7 @@ background: 'linear-gradient(0deg, rgba(2,3,2,1) 0%, rgba(39,91,78,0.7) 100%)',
 border: '1px solid black',
     color:'white',
     borderRadius: 20,
+    minWidth:100,
     maxWidth:200
 }
 const message = 'У ВАС НЕ ХВАТАЕТ МАНЫ'
@@ -71,7 +72,7 @@ class Cards extends React.Component {
                                 <CardMedia
                                   component="img"
                                   alt="cardimg"
-                                  height="100"
+                                  height='100'
                                   image={item.avatar}
                                   title="sss"
                                 />
