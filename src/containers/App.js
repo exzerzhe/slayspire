@@ -89,11 +89,11 @@ class App extends Component {
  if (gameBegin === true){
     return(
       <Container maxWidth='xl' style={AppStyle}>
-          <Container maxWidth='xl' style={{height:window.innerHeight - 670, textAlign:'center', paddingTop:20}}>
+          <Container maxWidth='xl' style={{height:window.innerHeight - 670, textAlign:'center', paddingTop:10}}>
             {hp > 0?
             <div>
             {fetching? <div className="tracking-in-contract-bck" style={{color:'white', marginBottom:20, fontSize:20}}>Ищу врага</div> : 
-            <div style={{margin:10}}>
+            <div>
             {renderButton?
             <Button variant='contained' onClick={()=>{enemyTurnAction();fetchMovesAction(playerName);document.getElementById('ag').setAttribute('class',"slide-out-blurred-top")}}>End turn</Button> : null}
             <Typography variant="h5" style={{color:'white'}}> Turn: {turn}</Typography>
@@ -148,7 +148,7 @@ class App extends Component {
             </Grid>
             </Grid>
             </Container>
-            <Container maxWidth='xl' style={{marginTop:50}}>
+            <Container maxWidth='xl' style={{marginTop:10}}>
               
               <div>
               {hp <= 0? null :
