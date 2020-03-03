@@ -21,10 +21,10 @@ this.props.gameMenu(playerName, avatar)
     render(){
         return(
          <Container style={{textAlign:'center', marginTop:200}}>
-             <Typography variant='h3' style={{color:'white', marginBottom:100}}>Выберите своего бойца</Typography>
+             <Typography className="tracking-in-contract-bck" variant='h4' style={{color:'white', marginBottom:100}}>Выберите своего бойца</Typography>
              <List style={flexContainer}>
                  {this.props.character.map((item)=>
-                 <div style={{marginRight:15}}>
+                 <div style={{marginRight:30}}>
                      <Container>
                       <Typography variant="h5" style={{color:'black',textShadow:'0 -1px 4px #FFF, 0 -2px 10px #ff0, 0 -10px 20px #ff8000, 0 -18px 40px #F00'}}>{item.name}</Typography>
                       </Container>

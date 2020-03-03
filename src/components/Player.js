@@ -15,20 +15,22 @@ export default class Player extends React.Component {
                 <div style={{color:'white', textAlign:'center', marginBottom:10}}>
                 {this.props.playerName}
             </div>
-            <Container style={{height:250,
+            <Container className="text-focus-in" style={{height:250,
+            maxWidth: 250,
   backgroundColor:'#f3f3f3', 
   borderRadius:200, 
   textAlign:'center', 
   backgroundImage: "url(" + this.props.avatar + ')',
   backgroundRepeat: 'no-repeat',
   backgroundSize: '100% 100%',
+  border: '1px solid black',
   backgroundPosition: 'center',}}>
             </Container>
             <Container style={{color:'white', textAlign:'center'}}>
                 HP: {this.props.playerHp}<br></br>
-                <LinearProgress variant='determinate' color="secondary" style={{height:10}} value={this.props.playerHp}></LinearProgress>
+                <LinearProgress variant='determinate' color="secondary" style={{height:10, border:'1px solid black'}} value={this.props.playerHp}></LinearProgress>
                 Mana: {this.props.mana}
-                <LinearProgress variant='determinate' style={{height:10}} value={normalise(this.props.mana)}></LinearProgress>
+                <LinearProgress variant='determinate' style={{height:10, border:'1px solid black'}} value={normalise(this.props.mana)}></LinearProgress>
             </Container>
             </div>
         )

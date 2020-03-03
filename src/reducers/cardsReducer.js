@@ -13,7 +13,7 @@ export function cardsReducer (state=initialState, action) {
             {
                 let jsondata = action.data
                 let moves = []
-                for (let i = 0; i <= 4; i++){
+                for (let i = 0; i <= 5; i++){
                     let indexmove = Math.floor(Math.random() * jsondata.length)
                     let move = jsondata[indexmove]
                     moves.push(move)

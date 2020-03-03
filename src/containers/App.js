@@ -89,22 +89,23 @@ class App extends Component {
  if (gameBegin === true){
     return(
       <Container maxWidth='xl' style={AppStyle}>
-          <Container maxWidth='xl' style={{height:window.innerHeight - 600, textAlign:'center', paddingTop:50}}>
+          <Container maxWidth='xl' style={{height:window.innerHeight - 670, textAlign:'center', paddingTop:20}}>
             {hp > 0?
             <div>
-            {fetching? <div style={{color:'white', marginBottom:20, fontSize:20}}>Ищу врага</div> : 
+            {fetching? <div className="tracking-in-contract-bck" style={{color:'white', marginBottom:20, fontSize:20}}>Ищу врага</div> : 
             <div style={{margin:10}}>
             {renderButton?
-            <Button variant='contained' onClick={()=>{enemyTurnAction();fetchMovesAction(playerName)}}>End turn</Button> : null}
+            <Button variant='contained' onClick={()=>{enemyTurnAction();fetchMovesAction(playerName);document.getElementById('ag').setAttribute('class',"slide-out-blurred-top")}}>End turn</Button> : null}
             <Typography variant="h5" style={{color:'white'}}> Turn: {turn}</Typography>
             </div> }
             </div> :
             <div>
             <div className="tracking-in-contract-bck" style={{color:'white', fontSize: 30, marginBottom: 30}}>{enemyName} был повержен</div>
             <NewCards fetchNewMoves={fetchNewMovesAction} playerName={playerName} newData={newData} newGame={newGameAction} fetchEnemy={fetchEnemyAction} fetchMoves={fetchMovesAction}/>
+            <Button variant="contained" style={{marginTop:70}} onClick={()=>{fetchEnemyAction();newGameAction();fetchMovesAction(playerName)}}>Не хочу я ваших карт</Button>
             </div> }
             </Container>
-            <Container maxWidth="lg">
+            <Container maxWidth="xl">
           <Grid container spacing={1}>
             <Grid item xs={3}>
               {hp >0?
@@ -113,24 +114,24 @@ class App extends Component {
             </Container> : null}
             </Grid>
             <Grid item xs={3}>
-              <Container style={{textAlign:'left', height:140}}>
+              <Container style={{textAlign:'left', height:140, paddingTop:'25%'}}>
                 {moveFetching? 
-                <Typography variant="h5" style={{color:'white'}}>
+                <Typography className="text-focus-in" variant="h5" style={{color:'white'}}>
                 {playerSay}:
                 <br></br>
-                <Typography variant="h4" style={{color:'red', textShadow:'#FFF 0px 0px 5px, #FFF 0px 0px 10px, #FFF 0px 0px 15px, #FF2D95 0px 0px 20px, #FF2D95 0px 0px 30px, #FF2D95 0px 0px 40px, #FF2D95 0px 0px 50px, #FF2D95 0px 0px 75px'}}>
+                <Typography className="text-focus-in" variant="h4" style={{color:'red', textShadow:'#FFF 0px 0px 5px, #FFF 0px 0px 10px, #FFF 0px 0px 15px, #FF2D95 0px 0px 20px, #FF2D95 0px 0px 30px, #FF2D95 0px 0px 40px, #FF2D95 0px 0px 50px, #FF2D95 0px 0px 75px'}}>
                 {playerMove}
                 </Typography>
                 </Typography> : null}
               </Container>
               </Grid>
               <Grid item xs={3}>
-                <Container style={{textAlign:'right', height:140}}>
+                <Container style={{textAlign:'right', height:140, paddingTop:'25%'}}>
                 {enemyPhrase ?
-                <Typography variant="h5" style={{color:'white'}}>
+                <Typography className="text-focus-in" variant="h5" style={{color:'white'}}>
                 {enemySay}
                 <br></br>
-                <Typography variant="h4" style={{color:'red', textShadow:'0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #49ff18, 0 0 30px #49FF18, 0 0 40px #49FF18, 0 0 55px #49FF18, 0 0 75px #49ff18'}}>
+                <Typography className="text-focus-in" variant="h4" style={{color:'red', textShadow:'0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #49ff18, 0 0 30px #49FF18, 0 0 40px #49FF18, 0 0 55px #49FF18, 0 0 75px #49ff18'}}>
                 {move.name}
                 </Typography>
                 <Typography>
@@ -148,11 +149,11 @@ class App extends Component {
             </Grid>
             </Container>
             <Container maxWidth='xl' style={{marginTop:50}}>
-              {moveFetching? null :
+              
               <div>
               {hp <= 0? null :
           <Cards data={data} fetchMoves={fetchMovesAction} damageDeal={damageDealAction} manaReduce={manaReduceAction} mana={mana} playerName={playerName} renderButton={renderButton} renderCards={renderCards} removeCard={removeCardAction} hp={hp} fetching={fetching} renderMultiplier={renderMultiplier}/>}
-          </div>}
+          </div>
           </Container>
       </Container>
     )} else 
@@ -198,7 +199,7 @@ const mapDispatchToProps = dispatch => {
     fetchEnemyAction:()=>dispatch(fetchEnemy()),
     gameMenuAction:(playerName, avatar)=>dispatch(gameMenu(playerName, avatar)),
     fetchCharacterAction:()=>dispatch(fetchCharacter()),
-    removeCardAction:(cardName)=>dispatch(removeCard(cardName)),
+    removeCardAction:(cardName, index)=>dispatch(removeCard(cardName, index)),
     fetchNewMovesAction:(playerName)=>dispatch(fetchNewMoves(playerName))
     
   }
