@@ -94,9 +94,9 @@ class App extends Component {
             <div>
             {fetching? <div className="tracking-in-contract-bck" style={{color:'white', marginBottom:20, fontSize:20}}>Ищу врага</div> : 
             <div>
+              <Typography variant="h5" style={{color:'white'}}> Turn: {turn}</Typography>
             {renderButton?
             <Button variant='contained' onClick={()=>{enemyTurnAction();fetchMovesAction(playerName);document.getElementById('ag').setAttribute('class',"slide-out-blurred-top")}}>End turn</Button> : null}
-            <Typography variant="h5" style={{color:'white'}}> Turn: {turn}</Typography>
             </div> }
             </div> :
             <div>
@@ -148,7 +148,7 @@ class App extends Component {
             </Grid>
             </Grid>
             </Container>
-            <Container maxWidth='xl' style={{marginTop:10}}>
+            <Container maxWidth='xl' style={{marginTop:50}}>
               
               <div>
               {hp <= 0? null :
