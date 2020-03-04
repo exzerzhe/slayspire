@@ -10,6 +10,6 @@ export function enemyTurn () {
         dispatch({
             type: DEAL_DAMAGE
         })
-    }, 3000)
+    },4000)
     }
 }

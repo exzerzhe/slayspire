@@ -102,7 +102,7 @@ class App extends Component {
             <div>
             <div className="tracking-in-contract-bck" style={{color:'white', fontSize: 30, marginBottom: 30}}>{enemyName} был повержен</div>
             <NewCards fetchNewMoves={fetchNewMovesAction} playerName={playerName} newData={newData} newGame={newGameAction} fetchEnemy={fetchEnemyAction} fetchMoves={fetchMovesAction}/>
-            <Button variant="contained" style={{marginTop:70}} onClick={()=>{fetchEnemyAction();newGameAction();fetchMovesAction(playerName)}}>Не хочу я ваших карт</Button>
+            <Button variant="contained" className="pulsate-fwd" style={{marginTop:70}} onClick={()=>{fetchEnemyAction();newGameAction();fetchMovesAction(playerName)}}>Не хочу я ваших карт</Button>
             </div> }
             </Container>
             <Container maxWidth="xl">
@@ -116,28 +116,24 @@ class App extends Component {
             <Grid item xs={3}>
               <Container style={{textAlign:'left', height:140, paddingTop:'25%'}}>
                 {moveFetching? 
-                <Typography className="text-focus-in" variant="h5" style={{color:'white'}}>
-                {playerSay}:
-                <br></br>
+                <div>
                 <Typography className="text-focus-in" variant="h4" style={{color:'red', textShadow:'#FFF 0px 0px 5px, #FFF 0px 0px 10px, #FFF 0px 0px 15px, #FF2D95 0px 0px 20px, #FF2D95 0px 0px 30px, #FF2D95 0px 0px 40px, #FF2D95 0px 0px 50px, #FF2D95 0px 0px 75px'}}>
                 {playerMove}
                 </Typography>
-                </Typography> : null}
+                </div> : null}
               </Container>
               </Grid>
               <Grid item xs={3}>
                 <Container style={{textAlign:'right', height:140, paddingTop:'25%'}}>
-                {enemyPhrase ?
-                <Typography className="text-focus-in" variant="h5" style={{color:'white'}}>
-                {enemySay}
-                <br></br>
+                  {enemyPhrase?
+                  <div>
                 <Typography className="text-focus-in" variant="h4" style={{color:'red', textShadow:'0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #49ff18, 0 0 30px #49FF18, 0 0 40px #49FF18, 0 0 55px #49FF18, 0 0 75px #49ff18'}}>
                 {move.name}
                 </Typography>
-                <Typography>
+                <Typography style={{color:'white'}}>
                   Урон: {move.damage}
-                </Typography>
-                </Typography> : null}
+                  </Typography>
+                  </div> : null }
                 </Container>
               </Grid>
             <Grid item xs={3}>

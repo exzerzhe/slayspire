@@ -24,9 +24,12 @@ export function enemyTurn (state=initialState, action) {
                 let damageCalc = choosenMove.damage
             return{...state, enemyPhrase:true, move:choosenMove, damage: damageCalc, renderButton:false}
             }
-            case DEAL_DAMAGE: 
-                
+            case DEAL_DAMAGE: {
+                if (state.playerHp - state.damage <= 20) {
+                    document.getElementById('player').style = "opacity:1; color:red; font-size:50px"
+                }
             return{...state, playerHp: state.playerHp - state.damage, enemyPhrase:false, renderButton:true}
+            }
             
             case NEW_GAME:
                 return{...initialState, playerHp:state.playerHp, playerName: state.playerName, avatar:state.avatar }
@@ -39,6 +42,9 @@ export function enemyTurn (state=initialState, action) {
                                 heal = 0
                             }
                         } else heal = 0
+                        if (state.playerHp + heal > 20) {
+                            document.getElementById('player').style = "opacity:0; color:red; font-size:50px"
+                        }
 
                         return{...state, playerHp: state.playerHp + heal }
                     }

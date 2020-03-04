@@ -25,7 +25,7 @@ border: '1px solid black',
     color:'white',
     borderRadius: 20,
     minWidth:100,
-    maxWidth:200
+    maxWidth:200    
 }
 const message = 'У ВАС НЕ ХВАТАЕТ МАНЫ'
 
