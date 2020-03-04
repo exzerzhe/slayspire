@@ -15,8 +15,8 @@ export default class Player extends React.Component {
         return(
             <div>
                 <div style={{color:'white', textAlign:'center', marginBottom:10}}>{this.props.enemyName}</div>
-            <Container className="text-focus-in" style={{height:window.innerHeight-500, 
-            maxWidth: window.innerHeight-500,
+            <Container className="text-focus-in" style={{height:250, 
+            width: 250,
   backgroundImage: "url(" + this.props.enemyAvatar + ')',
   backgroundRepeat: 'no-repeat',
   backgroundSize: '100% 100%',

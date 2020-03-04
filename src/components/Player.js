@@ -15,8 +15,9 @@ export default class Player extends React.Component {
                 <div style={{color:'white', textAlign:'center', marginBottom:10}}>
                 {this.props.playerName}
             </div>
-            <Container className="text-focus-in" style={{height: window.innerHeight-500,
-            maxWidth: window.innerHeight-500,
+            <Container className="text-focus-in" style={{
+            height: 250,
+            width: 250,
   backgroundColor:'#f3f3f3', 
   borderRadius:200, 
   textAlign:'center', 
