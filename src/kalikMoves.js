@@ -1,7 +1,7 @@
 export const kalikMoves = [
     {
         name: "Дымная тяга",
-        damage: 6,
+        damage: 100,
         mana: 3,
         avatar: "../CardImages/kalik/дымная тяга.jpg"
     },

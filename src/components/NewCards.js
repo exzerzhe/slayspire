@@ -33,7 +33,7 @@ export default class NewCards extends React.Component {
     componentDidMount(){
         this.props.fetchNewMoves(this.props.playerName)
     }
-    addCard = (dmg, mana, name, heal, buff, percent) => {
+    addCard = (dmg, mana, name, heal, buff, percent, avatar) => {
         if (this.props.playerName === 'КОШКА'){
             koshkaMoves.push({
             name: name,
@@ -41,7 +41,8 @@ export default class NewCards extends React.Component {
             damage: dmg,
             mana: mana,
             buff: buff,
-            percent: percent
+            percent: percent,
+            avatar: avatar
             })
             console.log(koshkaMoves)
         }
@@ -52,7 +53,8 @@ export default class NewCards extends React.Component {
             damage: dmg,
             mana: mana,
             buff: buff,
-            percent: percent
+            percent: percent,
+            avatar: avatar
             })
         }
         if (this.props.playerName === 'КАЛИК'){
@@ -62,7 +64,8 @@ export default class NewCards extends React.Component {
             damage: dmg,
             mana: mana,
             buff: buff,
-            percent: percent
+            percent: percent,
+            avatar: avatar
             })
         }
         
@@ -74,7 +77,7 @@ export default class NewCards extends React.Component {
                 <List style={flexContainer}>
                     {this.props.newData.map((item)=>
                     <a href="#" style={{marginRight:20, textDecoration:'none', color:'black'}}
-                     onClick={()=>{this.addCard(item.damage, item.mana, item.name, item.heal, item.buff, item.percent); 
+                     onClick={()=>{this.addCard(item.damage, item.mana, item.name, item.heal, item.buff, item.percent, item.avatar); 
                         this.props.fetchEnemy();
                         this.props.newGame();
                         this.props.fetchMoves(this.props.playerName)}}>
@@ -88,7 +91,7 @@ export default class NewCards extends React.Component {
                                 <CardMedia
                                   component="img"
                                   alt="cardimg"
-                                  height="80"
+                                  height="150"
                                   image={item.avatar}
                                   title="sss"
                                 />
